@@ -22,33 +22,33 @@ public interface IObra {
     int getAnyo();
 
     String getOrigen();
-    
+
     Calendar getFecha_reparacion();
-    
+
     String getAutor();
-    
+
     boolean getestado();
-    
+
     String getDescripcion();
 
     void setId(String id);
-    
+
     void setNombre(String nombre);
-    
+
     void setTipo(String tipo);
-    
+
     void setEstilo(String estilo);
-    
+
     void setAnyo(int anyo);
-    
+
     void setOrigen(String origen);
-    
+
     void setFecha_reparacion(Calendar fecha_reparacion);
-    
+
     void setAutor(String autor);
-    
+
     void setEstado(boolean estado);
-    
+
     void setDescripcion(String descripcion);
 
 }
