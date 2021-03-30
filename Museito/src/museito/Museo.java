@@ -12,6 +12,23 @@ public class Museo {
     private int telefono;
     private String web;
     private List<Obra> obras = new ArrayList();
+    private static Museo uniqueInstance;
+
+    private Museo() {
+
+    }
+
+    public static Museo getInstance() {
+
+        if (uniqueInstance == null) {
+
+            System.out.println("Crear una");
+            uniqueInstance = new Museo();
+        }
+
+        System.out.println("Devolver una");
+        return uniqueInstance;
+    }
 
     public String getNombre() {
         return nombre;
