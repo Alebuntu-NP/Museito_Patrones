@@ -6,27 +6,27 @@ import java.util.List;
 
 public class Museo {
 
-    private String nombre;
-    private String direccion;
-    private String pais;
-    private int telefono;
-    private String web;
+    private String nombre = "AL A MA";
+    private String direccion = "Calle Pablo de Olavide 57";
+    private String pais = "ESPAÑA";
+    private int telefono = 955556689;
+    private String web = "https://al-a-ma.es";
     private List<Obra> obras = new ArrayList();
     private static Museo uniqueInstance;
 
     private Museo() {
-
+        
     }
 
     public static Museo getInstance() {
 
         if (uniqueInstance == null) {
 
-            System.out.println("Crear una");
+           //Creando la instancia unica Patron Singleton
             uniqueInstance = new Museo();
         }
 
-        System.out.println("Devolver una");
+        //Devolviendo instancia unica Patron Singleton
         return uniqueInstance;
     }
 

@@ -15,7 +15,11 @@ public class Museito {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    
+        
+        // Patrón Singleton
+        Museo m = Museo.getInstance();
+        System.out.println(m.getDireccion());
+
     }
-    
+
 }
