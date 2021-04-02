@@ -2,7 +2,7 @@ package museito;
 
 import java.util.Calendar;
 
-public class Obra {
+public class Obra implements IObra {
 
     private String id;
     private String nombre;
@@ -107,6 +107,7 @@ public class Obra {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+
+ 
     
 }

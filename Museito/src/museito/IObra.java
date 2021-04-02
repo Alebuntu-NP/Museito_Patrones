@@ -27,7 +27,7 @@ public interface IObra {
 
     String getAutor();
 
-    boolean getestado();
+    boolean isEstado();
 
     String getDescripcion();
 
