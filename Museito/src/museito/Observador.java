@@ -1,6 +1,6 @@
 package museito;
 
 public interface Observador {
-
-    public void update(Obra obra);
+    //Implementación patrón Observador
+    public void update(IObra obra);
 }

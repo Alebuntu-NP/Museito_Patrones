@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Museo {
+public class Museo implements Sujeto {
 
     private String nombre = "AL A MA";
     private String direccion = "Calle Pablo de Olavide 57";
     private String pais = "ESPAÑA";
     private int telefono = 955556689;
     private String web = "https://al-a-ma.es";
-    private List<Obra> obras = new ArrayList();
+    private List<IObra> obras = new ArrayList();
+    private List<Observador> observadores = new ArrayList();
     private static Museo uniqueInstance;
 
     private Museo() {
@@ -30,6 +31,9 @@ public class Museo {
         return uniqueInstance;
     }
 
+    
+    
+    
     public String getNombre() {
         return nombre;
     }
@@ -69,11 +73,25 @@ public class Museo {
     public void setWeb(String web) {
         this.web = web;
     }
+    
+    //Implementación patrón Observador
 
-    public boolean addObra(Obra obra) {
+     public void notifyObservers() {
+        for(Observador o:observadores)
+            o.update(obras.get(obras.size()-1));
+    }
 
-        return obras.add(obra);
+    public void registerObserver(Observador o) {
+        this.observadores.add(o);
+    }
 
+    public void removeObserver(Observador o) {
+        this.observadores.remove(o);
+    }
+    
+    public void addObra(IObra obra){
+        this.obras.add(obra);
+        this.notifyObservers();
     }
 
     public boolean deleteObra(String id) {
@@ -87,6 +105,7 @@ public class Museo {
             if (id.compareTo(o.getId()) == 0) {
 
                 obras.remove(o);
+                this.notifyObservers();
 
             }
 
