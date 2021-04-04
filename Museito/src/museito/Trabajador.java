@@ -20,7 +20,7 @@ public class Trabajador extends Persona implements Observador {
     
     
     public void update(IObra obra) {
-        System.out.println("Se informa al trabajador " + getNombre() + " que la obra con nombre "+ obra.getNombre()+" "+obra.getEstado());
+        System.out.println("Se informa1 al trabajador " + getNombre() + " que la obra con nombre "+ obra.getNombre()+" "+obra.getEstado());
     }
     
     

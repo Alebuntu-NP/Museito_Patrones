@@ -29,9 +29,10 @@ public class Museito {
         museo.addObra(obra1);
         museo.deleteObra("12sq");
 
+        mostrarOpciones();
     }
 
-    public void mostrarOpciones() {
+    public static void mostrarOpciones() {
 
         int opc;
         do {
@@ -55,7 +56,7 @@ public class Museito {
         } while (opc != 0);
     }
 
-    private void realizarOpcion(int opc) {
+    private static void realizarOpcion(int opc) {
         switch (opc) {
             case 1:
                 pantallaMenuCliente();
@@ -64,7 +65,7 @@ public class Museito {
         }
     }
 
-    private void pantallaMenuCliente() {
+    private static void pantallaMenuCliente() {
 
         int opc;
 
@@ -93,7 +94,7 @@ public class Museito {
         } while (opc != 0);
     }
 
-    private void realizarOpcionGestionCliente(int opc) {
+    private static void realizarOpcionGestionCliente(int opc) {
         System.out.println("Opción elegida: " + opc);
 
         switch (opc) {
@@ -112,24 +113,24 @@ public class Museito {
         }
     }
 
-    private void mostrarAltaCliente() {
+    private static void mostrarAltaCliente() {
 
     }
 
-    private void mostrarBajaCliente() {
+    private static void mostrarBajaCliente() {
 
     }
 
-    private void mostrarModificacionCliente() {
+    private static void mostrarModificacionCliente() {
 
     }
 
-    private void mostrarConsultaCliente() {
+    private static void mostrarConsultaCliente() {
 
     }
 
     // Validacion del DNI
-    public boolean validarNIF(String nif) {
+    public static boolean validarNIF(String nif) {
 
         boolean correcto;
         Pattern pattern = Pattern.compile("(\\d{1,8})([TRWAGMYFPDXBNJZSQVHLCKEtrwagmyfpdxbnjzsqvhlcke])");
