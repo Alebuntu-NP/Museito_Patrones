@@ -13,7 +13,7 @@ public class CuadroStrategy implements Estrategia {
     public CuadroStrategy() {
     }
 
-    public void reparar(SimpleObraFactory obra) {
+    public void reparar(IObra obra) {
         System.out.println("El cuadro con nombre " + obra.getNombre() + " ha sido enviado a reparar.\n ");
     }
 

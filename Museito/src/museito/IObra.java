@@ -11,7 +11,7 @@ import java.util.Calendar;
  *
  * @author empic
  */
-public interface SimpleObraFactory {
+public interface IObra {
 
     String getId();
 
