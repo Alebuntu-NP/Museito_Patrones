@@ -27,7 +27,9 @@ public interface IObra {
 
     String getAutor();
 
-    boolean isEstado();
+    String getEstado();
+    
+    boolean isReparado();
 
     String getDescripcion();
 
@@ -47,7 +49,9 @@ public interface IObra {
 
     void setAutor(String autor);
 
-    void setEstado(boolean estado);
+    void setEstado(String estado);
+    
+    void setReparado(boolean reoarado);
 
     void setDescripcion(String descripcion);
 

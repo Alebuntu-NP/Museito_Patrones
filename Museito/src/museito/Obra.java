@@ -12,10 +12,11 @@ public class Obra implements IObra {
     private String origen;
     private Calendar fecha_reparacion;
     private String autor;
-    private boolean estado;
+    private String estado;
+    private boolean reparado;
     private String descripcion;
 
-    public Obra(String id, String nombre, String tipo, String estilo, int anyo, String origen, Calendar fecha_reparacion, String autor, boolean estado, String descripcion) {
+    public Obra(String id, String nombre, String tipo, String estilo, int anyo, String origen, Calendar fecha_reparacion, String autor, String estado, boolean reparado, String descripcion) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -25,6 +26,7 @@ public class Obra implements IObra {
         this.fecha_reparacion = fecha_reparacion;
         this.autor = autor;
         this.estado = estado;
+        this.reparado = reparado;
         this.descripcion = descripcion;
     }
 
@@ -60,9 +62,14 @@ public class Obra implements IObra {
         return autor;
     }
 
-    public boolean isEstado() {
+    public String getEstado() {
         return estado;
     }
+
+    public boolean isReparado() {
+        return reparado;
+    }
+
 
     public String getDescripcion() {
         return descripcion;
@@ -100,8 +107,12 @@ public class Obra implements IObra {
         this.autor = autor;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public void setReparado(boolean reparado) {
+        this.reparado = reparado;
     }
 
     public void setDescripcion(String descripcion) {

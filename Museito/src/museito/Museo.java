@@ -16,14 +16,14 @@ public class Museo implements Sujeto {
     private static Museo uniqueInstance;
 
     private Museo() {
-        
+
     }
 
     public static Museo getInstance() {
 
         if (uniqueInstance == null) {
 
-           //Creando la instancia unica Patron Singleton
+            //Creando la instancia unica Patron Singleton
             uniqueInstance = new Museo();
         }
 
@@ -31,9 +31,6 @@ public class Museo implements Sujeto {
         return uniqueInstance;
     }
 
-    
-    
-    
     public String getNombre() {
         return nombre;
     }
@@ -73,12 +70,12 @@ public class Museo implements Sujeto {
     public void setWeb(String web) {
         this.web = web;
     }
-    
-    //Implementación patrón Observador
 
-     public void notifyObservers() {
-        for(Observador o:observadores)
-            o.update(obras.get(obras.size()-1));
+    //Implementación patrón Observador
+    public void notifyObservers() {
+        for (Observador o : observadores) {
+            o.update(obras.get(obras.size() - 1));
+        }
     }
 
     public void registerObserver(Observador o) {
@@ -88,8 +85,9 @@ public class Museo implements Sujeto {
     public void removeObserver(Observador o) {
         this.observadores.remove(o);
     }
-    
-    public void addObra(IObra obra){
+
+    public void addObra(IObra obra) {
+        obra.setEstado("se añadió");
         this.obras.add(obra);
         this.notifyObservers();
     }
@@ -103,9 +101,10 @@ public class Museo implements Sujeto {
             Obra o = (Obra) it.next();
 
             if (id.compareTo(o.getId()) == 0) {
-
-                obras.remove(o);
+                o.setEstado("se eliminó");
                 this.notifyObservers();
+                obras.remove(o);
+                enc=true;
 
             }
 
