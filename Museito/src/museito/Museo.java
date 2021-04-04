@@ -11,7 +11,7 @@ public class Museo implements Sujeto {
     private String pais = "ESPAÑA";
     private int telefono = 955556689;
     private String web = "https://al-a-ma.es";
-    private List<IObra> obras = new ArrayList();
+    private List<SimpleObraFactory> obras = new ArrayList();
     private List<Observador> observadores = new ArrayList();
     private static Museo uniqueInstance;
 
@@ -86,7 +86,7 @@ public class Museo implements Sujeto {
         this.observadores.remove(o);
     }
 
-    public void addObra(IObra obra) {
+    public void addObra(SimpleObraFactory obra) {
         obra.setEstado("se añadió");
         this.obras.add(obra);
         this.notifyObservers();

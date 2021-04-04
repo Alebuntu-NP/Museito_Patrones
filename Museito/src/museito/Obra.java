@@ -2,7 +2,7 @@ package museito;
 
 import java.util.Calendar;
 
-public class Obra implements IObra {
+public class Obra implements SimpleObraFactory {
 
     private String id;
     private String nombre;

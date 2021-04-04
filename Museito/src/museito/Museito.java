@@ -25,7 +25,7 @@ public class Museito {
 
         museo.registerObserver(t1);
         museo.registerObserver(t2);
-        IObra obra1 = new Obra("12sq", "Mona Lisa", "Cuadro", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color");
+        SimpleObraFactory obra1 = new Obra("12sq", "Mona Lisa", "Cuadro", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color");
         t1.getEstrategia("libro").reparar(obra1);
         // museo.addObra(obra1);
         //museo.deleteObra("12sq");
