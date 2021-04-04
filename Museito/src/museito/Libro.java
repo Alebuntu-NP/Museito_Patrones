@@ -20,4 +20,14 @@ public class Libro extends Obra {
         super(id, nombre, tipo, estilo, anyo, origen, fecha_reparacion, autor, estado, reparado, descripcion);
         this.num_paginas = num_paginas;
     }
+
+    public int getNum_paginas() {
+        return num_paginas;
+    }
+
+    public void setNum_paginas(int num_paginas) {
+        this.num_paginas = num_paginas;
+    }
+    
+    
 }
