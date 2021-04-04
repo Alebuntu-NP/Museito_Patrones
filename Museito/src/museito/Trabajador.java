@@ -41,7 +41,7 @@ public class Trabajador extends Persona implements Observador {
         return estrategia;
     }
 
-    public void update(IObra obra) {
+    public void update(Obra obra) {
         System.out.println("Se informa1 al trabajador " + getNombre() + " que la obra con nombre " + obra.getNombre() + " " + obra.getEstado());
     }
 

@@ -14,7 +14,7 @@ public class EsculturaStrategy implements Estrategia{
     public EsculturaStrategy() {
     }
 
-    public void reparar(IObra obra) {
+    public void reparar(Obra obra) {
         System.out.println("La escultura con nombre " + obra.getNombre() + " ha sido enviada a reparar.\n ");
     }
 
