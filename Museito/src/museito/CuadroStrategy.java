@@ -9,12 +9,12 @@ package museito;
  *
  * @author aleja
  */
-public class CuadroStrategy {
+public class CuadroStrategy implements Estrategia {
     public CuadroStrategy() {
     }
 
     public void reparar(IObra obra) {
-        System.out.println("La obra: " + obra.getNombre() + " ha sido enviada a reparar.\n ");
+        System.out.println("El cuadro con nombre " + obra.getNombre() + " ha sido enviado a reparar.\n ");
     }
 
     public String getTipoStrategy() {

@@ -9,16 +9,16 @@ package museito;
  *
  * @author aleja
  */
-public class EsculturaStrategy {
+public class EsculturaStrategy implements Estrategia{
 
     public EsculturaStrategy() {
     }
 
     public void reparar(IObra obra) {
-        System.out.println("La obra: " + obra.getNombre() + " ha sido enviada a reparar.\n ");
+        System.out.println("La escultura con nombre " + obra.getNombre() + " ha sido enviada a reparar.\n ");
     }
 
     public String getTipoStrategy() {
-        return "EXCULTURAO";
+        return "ESCULTURA";
     }
 }

@@ -15,7 +15,7 @@ public class LibroStrategy implements Estrategia{
     }
 
     public void reparar(IObra obra) {
-        System.out.println("La obra: " + obra.getNombre() + " ha sido enviada a reparar.\n ");
+        System.out.println("El libro con nombre " + obra.getNombre() + " ha sido enviado a reparar.\n ");
     }
 
     public String getTipoStrategy() {
