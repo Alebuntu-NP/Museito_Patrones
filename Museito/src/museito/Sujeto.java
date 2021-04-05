@@ -7,6 +7,6 @@ public interface Sujeto {
 
     public void removeObserver(Observador o);
 
-    public void notifyObservers();
+    public void notifyObservers(Obra obra);
 
 }

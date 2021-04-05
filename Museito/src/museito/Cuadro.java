@@ -12,9 +12,10 @@ import java.util.Calendar;
  * @author empic
  */
 public class Cuadro extends Obra{
+       private static String tipo = "Cuadro";
     private String marco;
     
-     public Cuadro(String id, String nombre, String tipo, String estilo, int anyo, String origen, Calendar fecha_reparacion, String autor, String estado, boolean reparado, String descripcion, String marco){
+     public Cuadro(String id, String nombre,String estilo, int anyo, String origen, Calendar fecha_reparacion, String autor, String estado, boolean reparado, String descripcion, String marco){
         super(id, nombre, tipo, estilo, anyo, origen, fecha_reparacion, autor, estado, reparado, descripcion);
         this.marco = marco;
         

@@ -5,16 +5,31 @@
  */
 package museito;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author aleja
  */
 public class CuadroStrategy implements Estrategia {
+
     public CuadroStrategy() {
     }
 
-    public void reparar(Obra obra) {
-        System.out.println("El cuadro con nombre " + obra.getNombre() + " ha sido enviado a reparar.\n ");
+    public void reparar(Obra obra, Museo museo) {
+        obra.setEstado("enviado a reparar.");
+        Museo.getInstance().notifyObservers(obra);
+
+        obra.setEstado("se esta reparando");
+        Museo.getInstance().notifyObservers(obra);
+        try {
+            Thread.sleep(5 * 1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(LibroStrategy.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        obra.setEstado("ha sido reparado.");
+        Museo.getInstance().notifyObservers(obra);
     }
 
     public String getTipoStrategy() {

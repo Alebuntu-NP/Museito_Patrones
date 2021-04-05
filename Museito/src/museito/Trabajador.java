@@ -14,7 +14,7 @@ public class Trabajador extends Persona implements Observador {
         super(nombre, apellido, dni, direccion, telefono);
 
         this.estrategias = new ArrayList<Estrategia>();
-        
+
         this.estrategias.add((Estrategia) new EsculturaStrategy());
         this.estrategias.add((Estrategia) new LibroStrategy());
         this.estrategias.add((Estrategia) new CuadroStrategy());
@@ -42,7 +42,8 @@ public class Trabajador extends Persona implements Observador {
     }
 
     public void update(Obra obra) {
-        System.out.println("Se informa1 al trabajador " + getNombre() + " que la obra con nombre " + obra.getNombre() + " " + obra.getEstado());
+
+        System.out.println("Se informa al trabajador " + getNombre() + " que: " + obra.getTipo() + " con nombre " + obra.getNombre() + " " + obra.getEstado());
     }
 
 }

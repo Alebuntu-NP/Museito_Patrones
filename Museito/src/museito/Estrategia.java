@@ -11,7 +11,7 @@ package museito;
  */
 public interface Estrategia {
 
-    void reparar(Obra obra);
+    void reparar(Obra obra,Museo museo);
 
     String getTipoStrategy();
 

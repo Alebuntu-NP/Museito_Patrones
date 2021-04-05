@@ -72,9 +72,9 @@ public class Museo implements Sujeto {
     }
 
     //Implementación patrón Observador
-    public void notifyObservers() {
+    public void notifyObservers(Obra obra) {
         for (Observador o : observadores) {
-            o.update(obras.get(obras.size() - 1));
+            o.update(obra);
         }
     }
 
@@ -89,7 +89,7 @@ public class Museo implements Sujeto {
     public void addObra(Obra obra) {
         obra.setEstado("se añadió");
         this.obras.add(obra);
-        this.notifyObservers();
+        this.notifyObservers(obra);
     }
 
     public boolean deleteObra(String id) {
@@ -102,7 +102,7 @@ public class Museo implements Sujeto {
 
             if (id.compareTo(o.getId()) == 0) {
                 o.setEstado("se eliminó");
-                this.notifyObservers();
+                this.notifyObservers(o);
                 obras.remove(o);
                 enc=true;
 

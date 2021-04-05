@@ -13,12 +13,15 @@ import java.util.Calendar;
  */
 public class Libro extends Obra {
 
+    private static String tipo = "Libro";
     private int num_paginas;
 
-    public Libro(String id, String nombre, String tipo, String estilo, int anyo, String origen, Calendar fecha_reparacion, String autor, String estado, boolean reparado, String descripcion, int num_paginas) {
+    public Libro(String id, String nombre, String estilo, int anyo, String origen, Calendar fecha_reparacion, String autor, String estado, boolean reparado, String descripcion, int num_paginas) {
 
-        super(id, nombre, tipo, estilo, anyo, origen, fecha_reparacion, autor, estado, reparado, descripcion);
+        super(id, nombre,tipo, estilo, anyo, origen, fecha_reparacion, autor, estado, reparado, descripcion);
         this.num_paginas = num_paginas;
+
+
     }
 
     public int getNum_paginas() {
@@ -28,6 +31,5 @@ public class Libro extends Obra {
     public void setNum_paginas(int num_paginas) {
         this.num_paginas = num_paginas;
     }
-    
-    
+
 }

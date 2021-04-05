@@ -19,18 +19,22 @@ public class Museito {
 
         // Patrón Singleton
         Museo museo = Museo.getInstance();
-        System.out.println(museo.getDireccion());
-        Trabajador t1 = new Trabajador("Norberto", "Garcia", "5678932B", "Calle Alemeda 37", 673947638, "Presidente");
-        Trabajador t2 = new Trabajador("Patricia", "Garcia", "5678931B", "Calle Alemeda 37", 673947637, "Barrendero");
+//        System.out.println(museo.getDireccion());
+//        Trabajador t1 = new Trabajador("Norberto", "Garcia", "5678932B", "Calle Alemeda 37", 673947638, "Presidente");
+//        Trabajador t2 = new Trabajador("Patricia", "Garcia", "5678931B", "Calle Alemeda 37", 673947637, "Barrendero");
+//
+//        museo.registerObserver(t1);
+//        museo.registerObserver(t2);
+//        Libro libro1 = new Libro("12sq", "Mona Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color", 23);
+//        Escultura escultura = new Escultura("12sq", "Mono Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color", "Oro");
+//        System.out.println(libro1.getTipo());
+//        museo.addObra(libro1);
+//        museo.addObra(escultura);
 
-        museo.registerObserver(t1);
-        museo.registerObserver(t2);
-        Libro libro1 = new Libro("12sq", "Mona Lisa", "Cuadro", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color",23);
-        t1.getEstrategia("libro").reparar(libro1);
-        // museo.addObra(obra1);
+       // t1.getEstrategia("libro").reparar(libro1, museo);
+       // t1.getEstrategia("escultura").reparar(escultura, museo);
         //museo.deleteObra("12sq");
-
-        //mostrarOpciones();
+        mostrarOpciones();
     }
 
     public static void mostrarOpciones() {
@@ -38,7 +42,7 @@ public class Museito {
         int opc;
         do {
             System.out.println("\n\n\n\tMenú Principal:\n");
-            System.out.println("\t1. Gestionar Clientes");
+            System.out.println("\t1. Gestionar Trabajadores");
             System.out.println("\t----------------------");
             System.out.println("\t0. Salir");
             System.out.print("\n\n--> Introduzca una opción: ");
@@ -60,19 +64,19 @@ public class Museito {
     private static void realizarOpcion(int opc) {
         switch (opc) {
             case 1:
-                pantallaMenuCliente();
+                pantallaMenuTrabajador();
                 break;
 
         }
     }
 
-    private static void pantallaMenuCliente() {
+    private static void pantallaMenuTrabajador() {
 
         int opc;
 
         do {
             System.out.println("\n\n\n\tMenú Gestionar Cliente:\n");
-            System.out.println("\t1. Alta de Cliente");
+            System.out.println("\t1. Alta de Cliente");          
             System.out.println("\t2. Baja de Cliente");
             System.out.println("\t3. Modificación de Cliente");
             System.out.println("\t4. Consulta de Cliente");
