@@ -29,7 +29,14 @@ public class Museito {
      */
     public static Museo museo = Museo.getInstance();
 
-    public static int contador = 1;
+    //Contador de id de libro
+    public static int c1 = 1;
+
+    //Contador de id de escultura
+    public static int c2 = 1;
+
+    //Contador de id de cuadro
+    public static int c3 = 1;
 
     /**
      * Programa principal
@@ -59,7 +66,7 @@ public class Museito {
     }
 
     /**
-     *
+     * Menus de nuestra aplicaion del museo
      */
     public static void mostrarOpciones() {
 
@@ -68,6 +75,8 @@ public class Museito {
             System.out.println("\n\n\n\tMenú Principal:\n");
             System.out.println("\t1. Gestionar Trabajador");
             System.out.println("\t2. Gestionar Obra");
+            System.out.println("\t3. Listar Trabajadores");
+            System.out.println("\t4. Listar Obras");
             System.out.println("\t----------------------");
             System.out.println("\t0. Salir");
             System.out.print("\n\n--> Introduzca una opción: ");
@@ -93,6 +102,12 @@ public class Museito {
                 break;
             case 2:
                 pantallaMenuObra();
+                break;
+            case 3:
+                pantallaListarTrabajadores();
+                break;
+            case 4:
+                pantallaListarObras();
                 break;
         }
     }
@@ -243,6 +258,8 @@ public class Museito {
             System.out.println("\t2. Eliminar Obra");
             System.out.println("\t3. Modificación de Obra");
             System.out.println("\t4. Consulta de Obra");
+            System.out.println("\t5. Reparar Obra");
+            System.out.println("\t6. Hace falta reparación");
             System.out.println("\t---------------------");
             System.out.println("\t0. Volver");
             System.out.print("\n\n--> Introduzca una opción: ");
@@ -278,6 +295,12 @@ public class Museito {
             case 4:
                 mostrarConsultaObra();
                 break;
+            case 5:
+                mostrarRepararObra();
+                break;
+            case 6:
+                mostrarAvisoReparacionObra();
+                break;
         }
     }
 
@@ -301,7 +324,6 @@ public class Museito {
                 fallo = -1;
             }
         } while (fallo == -1);
-//Arreglar en cada case un constructor
 
         System.out.print("Estilo: ");
         estilo = IO.readLine();
@@ -334,33 +356,35 @@ public class Museito {
 
         switch (tipo) {
             case "Libro":
-                id = "L" + contador;
+                id = "L" + c1;
                 int paginas;
                 System.out.print("Numero de paginas: ");
                 paginas = (int) IO.readNumber();
                 Libro libro = new Libro(id, nombre, estilo, anyo, origen, null, autor, estado, reparado, descripcion, paginas);
                 museo.addObra(libro);
+                c1++;
                 break;
             case "Escultura":
-                id = "E" + contador;
+                id = "E" + c2;
                 String material;
                 System.out.print("Material: ");
                 material = IO.readLine();
                 Escultura escultura = new Escultura(id, nombre, estilo, anyo, origen, null, autor, estado, reparado, descripcion, material);
                 museo.addObra(escultura);
+                c2++;
                 break;
             case "Cuadro":
-                id = "C" + contador;
+                id = "C" + c3;
                 String marco;
                 System.out.print("Marco: ");
                 marco = IO.readLine();
                 Cuadro cuadro = new Cuadro(id, nombre, estilo, anyo, origen, null, autor, estado, reparado, descripcion, marco);
                 museo.addObra(cuadro);
+                c3++;
                 break;
             default:
                 break;
         }
-        contador++;
 
         System.out.println("La obra se ha añadido correctamente");
     }
@@ -432,6 +456,20 @@ public class Museito {
         } else {
             System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
         }
+    }
+
+    private static void mostrarRepararObra() {
+    }
+
+    private static void mostrarAvisoReparacionObra() {
+    }
+
+    private static void pantallaListarTrabajadores() {
+
+    }
+
+    private static void pantallaListarObras() {
+
     }
 
     /**
