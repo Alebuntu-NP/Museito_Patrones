@@ -71,7 +71,6 @@ public class Museo implements Sujeto {
         this.web = web;
     }
 
-    
     //Implementación patrón Observador
     public void notifyObservers(Obra obra) {
         for (Observador o : observadores) {
@@ -93,6 +92,21 @@ public class Museo implements Sujeto {
 
     public List<Observador> getObservadores() {
         return observadores;
+    }
+
+    public Obra getObra(String id) {
+        Iterator it;
+        List obras = getObras();
+        it = obras.iterator();
+
+        while (it.hasNext()) {
+            Obra o = (Obra) it.next();
+            if (o.getId().compareTo(id) == 0) {
+                System.out.println(o.getNombre());
+                return o;
+            }
+        }
+        return null;
     }
 
     public void addObra(Obra obra) {
@@ -118,6 +132,7 @@ public class Museo implements Sujeto {
             }
 
         }
+
         return enc;
     }
 
@@ -138,7 +153,7 @@ public class Museo implements Sujeto {
             if (dni.compareTo(t.getDni()) == 0) {
 
                 observadores.remove(t);
-
+                enc = true;
             }
 
         }

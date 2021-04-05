@@ -23,7 +23,7 @@ public class Museito {
 
         // Patrón Singleton
 //        System.out.println(museo.getDireccion());
-//        Trabajador t1 = new Trabajador("Norberto", "Garcia", "5678932B", "Calle Alemeda 37", 673947638, "Presidente");
+        Trabajador t1 = new Trabajador("Norberto", "Garcia", "5678932B", "Calle Alemeda 37", 673947638, "Presidente");
 //        Trabajador t2 = new Trabajador("Patricia", "Garcia", "5678931B", "Calle Alemeda 37", 673947637, "Barrendero");
 //
 //        museo.registerObserver(t1);
@@ -33,9 +33,11 @@ public class Museito {
 //        System.out.println(libro1.getTipo());
 //        museo.addObra(libro1);
 //        museo.addObra(escultura);
+        //museo.addTrabajador(t1);
         // t1.getEstrategia("libro").reparar(libro1, museo);
         // t1.getEstrategia("escultura").reparar(escultura, museo);
         //museo.deleteObra("12sq");
+        // museo.deleteTrabajador("5678932B");
         mostrarOpciones();
     }
 
@@ -142,10 +144,33 @@ public class Museito {
         puesto = IO.readLine();
         Trabajador t = new Trabajador(nombre, apellido, dni, direccion, telefono, puesto);
         museo.addTrabajador(t);
-        System.out.println(museo.getObservadores().get(0));
+        System.out.println("El trabajador "+t.getNombre()+" se ha dado de baja correctamente.");
     }
 
     private static void mostrarBajaTrabajador() {
+
+        String dni;
+        System.out.println("\nIntroduzca el DNI de la obra: ");
+        dni = IO.readLine();
+        boolean enc = false;
+        Iterator it;
+        List trabajadores = museo.getObservadores();
+        it = trabajadores.iterator();
+
+        while (it.hasNext() && !enc) {
+            Trabajador t = (Trabajador) it.next();
+            if (t.getDni().compareTo(dni) == 0) {
+                enc = true;
+                museo.deleteTrabajador(dni);
+            }
+        }
+
+        if (!enc) {
+            System.out.println(LR + "No se ha encontrado un trabajador con el DNI dado" + LD);
+        } else {
+
+            System.out.println("Se ha dado de baja correctamente.");
+        }
 
     }
 
@@ -172,7 +197,7 @@ public class Museito {
         }
 
         if (!enc) {
-            System.out.println("No se ha encontrado un trabajador con el DNI dado");
+            System.out.println(LR + "No se ha encontrado un trabajador con el DNI dado" + LD);
         }
 
     }
@@ -294,7 +319,25 @@ public class Museito {
     }
 
     private static void mostrarBajaObra() {
+        String id;
+        System.out.println("\nIntroduzca el Id de la obra: ");
+        id = IO.readLine();
+        boolean enc = false;
+        Iterator it;
+        List obras = museo.getObras();
+        it = obras.iterator();
 
+        while (it.hasNext() && !enc) {
+            Obra o = (Obra) it.next();
+            if (o.getId().compareTo(id) == 0) {
+                enc = true;
+                museo.deleteObra(id);
+            }
+        }
+
+        if (!enc) {
+            System.out.println("No se ha encontrado una obra con el Id dado");
+        }
     }
 
     private static void mostrarModificacionObra() {
@@ -319,7 +362,7 @@ public class Museito {
         }
 
         if (!enc) {
-            System.out.println("No se ha encontrado una obra con el Id dado");
+            System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
         }
     }
 
