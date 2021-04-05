@@ -74,7 +74,8 @@ public class Trabajador extends Persona implements Observador {
 
     @Override
     public String toString() {
-        return "Trabajador{" + "puesto=" + puesto;
+        String s = "El trabajador "+ this.getNombre()+ " " +this.getApellido()+", con DNI"+this.getDni()+", vive en "+this.getDireccion()+", con puesto de "+this.getPuesto();
+        return s;
     }
 
 }
