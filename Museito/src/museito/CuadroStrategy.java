@@ -45,7 +45,7 @@ public class CuadroStrategy implements Estrategia {
             Museo.getInstance().notifyObservers(obra);
 
         } catch (InterruptedException ex) {
-            Logger.getLogger(EsculturaStrategy.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CuadroStrategy.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
