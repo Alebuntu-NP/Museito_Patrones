@@ -27,20 +27,27 @@ public class LibroStrategy implements Estrategia {
      * @param museo Museo en donde vamos a reparar el libro
      */
     public void reparar(Obra obra, Museo museo) {
-
-        obra.setEstado("enviado a reparar.");
-        Museo.getInstance().notifyObservers(obra);
-        obra.setEstado("se esta reparando");
-        Museo.getInstance().notifyObservers(obra);
         try {
+            obra.setEstado("se ha enviado a  espacio especial para reparar");
+            Museo.getInstance().notifyObservers(obra);
             Thread.sleep(5 * 1000);
+            obra.setEstado("se estan mirando las letras borrosas y otros defectos del libro");
+            Museo.getInstance().notifyObservers(obra);
+            Thread.sleep(5 * 1000);
+            obra.setEstado("se estan arreglando las letras borrosas con tinta especial y la solapa si estuviera dañada");
+            Museo.getInstance().notifyObservers(obra);
+            Thread.sleep(5 * 1000);
+            obra.setEstado("ha sido reparado.");
+            Museo.getInstance().notifyObservers(obra);
+            Thread.sleep(5 * 1000);
+            obra.setEstado("se esta llevando al museo.");
+            Museo.getInstance().notifyObservers(obra);
+            Thread.sleep(5 * 1000);
+            obra.setEstado("esta reparado en el museo.");
+            Museo.getInstance().notifyObservers(obra);
         } catch (InterruptedException ex) {
             Logger.getLogger(LibroStrategy.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        obra.setEstado("ha sido reparado.");
-        Museo.getInstance().notifyObservers(obra);
-
     }
 
     @Override

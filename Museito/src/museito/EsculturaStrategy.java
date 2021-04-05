@@ -27,18 +27,30 @@ public class EsculturaStrategy implements Estrategia {
      * @param museo Museo donde se encuentra la escultura
      */
     public void reparar(Obra obra, Museo museo) {
-        obra.setEstado("enviado a reparar.");
-        Museo.getInstance().notifyObservers(obra);
-
-        obra.setEstado("se esta reparando");
-        Museo.getInstance().notifyObservers(obra);
         try {
+            obra.setEstado("se ha enviado al almacen para reparar");
+            Museo.getInstance().notifyObservers(obra);
             Thread.sleep(5 * 1000);
+            obra.setEstado("lo esta mirando un restaurador para ver los defectos que hay que arreglar");
+            Museo.getInstance().notifyObservers(obra);
+            Thread.sleep(5 * 1000);
+            obra.setEstado("se encarga arcilla especial para la restauracion");
+            Museo.getInstance().notifyObservers(obra);
+            Thread.sleep(5 * 1000);
+            obra.setEstado("la esta arreglando el trabajador que es restaurador");
+            Museo.getInstance().notifyObservers(obra);
+            Thread.sleep(5 * 1000);
+            obra.setEstado("ha terminado de repararse");
+            Museo.getInstance().notifyObservers(obra);
+            Thread.sleep(5 * 1000);
+            obra.setEstado("esta siendo llevada a la exposición del museo.");
+            Museo.getInstance().notifyObservers(obra);
+            Thread.sleep(5 * 1000);
+            obra.setEstado("esta en la exposición del museo.");
+            Museo.getInstance().notifyObservers(obra);
         } catch (InterruptedException ex) {
-            Logger.getLogger(LibroStrategy.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EsculturaStrategy.class.getName()).log(Level.SEVERE, null, ex);
         }
-        obra.setEstado("ha sido reparado.");
-        Museo.getInstance().notifyObservers(obra);
     }
 
     @Override

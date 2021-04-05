@@ -50,15 +50,20 @@ public class Museito {
         Trabajador t1 = new Trabajador("Norberto", "Garcia", "5678932B", "Calle Alemeda 37", 673947638, "Presidente");
         Trabajador t2 = new Trabajador("Patricia", "Garcia", "5678931B", "Calle Alemeda 37", 673947637, "Barrendero");
 
-        Libro libro1 = new Libro("L1", "Mona Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color", 23);
-        Escultura escultura = new Escultura("E1", "Mono Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color", "Oro");
+        Libro libro = new Libro("L1", "Quijote", "Barroco", 2013, "ESPAÑA", null, "Cervantes", null, true, "Mu bonito y poco color", 23);
+        Escultura escultura = new Escultura("E1", "Mono Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", null, false, "Mu bonito", "Oro");
+        Cuadro cuadro = new Cuadro("C1", "Mona Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", null, false, "Mu bonito y poco color", "Madera de la buena");;
 
-        museo.addObra(libro1);
+        museo.addObra(libro);
         museo.addObra(escultura);
+        museo.addObra(cuadro);
+
         museo.addTrabajador(t1);
         museo.addTrabajador(t2);
-
-        mostrarOpciones();
+        t1.repararObra(libro, museo);
+        t1.repararObra(escultura, museo);
+        t1.repararObra(cuadro, museo);
+        //   mostrarOpciones();
     }
 
     /**
