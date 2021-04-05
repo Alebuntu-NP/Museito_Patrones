@@ -94,7 +94,7 @@ public class Trabajador extends Persona implements Observador {
     @Override
     public void update(Obra obra) {
 
-        System.out.println("Se informa al trabajador " + getNombre() + " que: " + obra.getTipo() + " con nombre " + obra.getNombre() + " " + obra.getEstado());
+        System.out.println("Se informa al trabajador " + getNombre() + " que: " + obra.getTipo() + " con id" + obra.getId() + " " + obra.getEstado());
     }
 
     @Override

@@ -37,6 +37,7 @@ public class LibroStrategy implements Estrategia {
         } catch (InterruptedException ex) {
             Logger.getLogger(LibroStrategy.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         obra.setEstado("ha sido reparado.");
         Museo.getInstance().notifyObservers(obra);
 

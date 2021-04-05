@@ -50,8 +50,6 @@ public class Museito {
         Trabajador t1 = new Trabajador("Norberto", "Garcia", "5678932B", "Calle Alemeda 37", 673947638, "Presidente");
         Trabajador t2 = new Trabajador("Patricia", "Garcia", "5678931B", "Calle Alemeda 37", 673947637, "Barrendero");
 
-        museo.registerObserver(t1);
-        museo.registerObserver(t2);
         Libro libro1 = new Libro("L1", "Mona Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color", 23);
         Escultura escultura = new Escultura("E1", "Mono Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color", "Oro");
 
@@ -209,8 +207,6 @@ public class Museito {
             nombre = IO.readLine();
             System.out.print("Apellidos: ");
             apellido = IO.readLine();
-            System.out.print("DNI: ");
-            dni = IO.readLine();
             System.out.print("Dirección: ");
             direccion = IO.readLine();
             System.out.print("Telefono: ");
@@ -219,7 +215,6 @@ public class Museito {
             puesto = IO.readLine();
             t.setNombre(nombre);
             t.setApellido(apellido);
-            t.getDni();
             t.setDireccion(direccion);
             t.setTelefono(telefono);
             t.setPuesto(puesto);
@@ -262,7 +257,7 @@ public class Museito {
             System.out.println("\t0. Volver");
             System.out.print("\n\n--> Introduzca una opción: ");
             opc = (int) IO.readNumber();
-            while (opc < 0 || opc > 4) {
+            while (opc < 0 || opc > 6) {
                 System.out.print(LR + "--> Introduzca una opción válida: " + LD);
                 opc = (int) IO.readNumber();
                 System.out.println("\n");
@@ -384,7 +379,6 @@ public class Museito {
                 break;
         }
 
-        System.out.println("La obra se ha añadido correctamente");
     }
 
     private static void mostrarBajaObra() {
@@ -459,18 +453,23 @@ public class Museito {
     private static void mostrarRepararObra() {
 
         String id, dni;
-        System.out.println("\nIntroduzca el DNI del trabajador que lleva\n"
-                + "la obra a reparar: ");
-
+        System.out.print("\nIntroduzca el DNI del trabajador que lleva la obra a reparar: ");
         dni = IO.readLine();
         Trabajador t = museo.getTrabajador(dni);
         if (t != null) {
 
-            System.out.println("\nIntroduzca el Id de la obra que necesita repación: ");
+            System.out.print("\nIntroduzca el Id de la obra que necesita reparación: ");
             id = IO.readLine();
             Obra o = museo.getObra(id);
+
             if (o != null) {
-                t.repararObra(o, museo);
+
+                if (o.isReparado()) {
+                    System.out.println("No necesita reparación");
+
+                } else {
+                    t.repararObra(o, museo);
+                }
             } else {
                 System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
             }
@@ -483,19 +482,25 @@ public class Museito {
 
     private static void mostrarAvisoReparacionObra() {
         String id, dni;
-        System.out.println("\nIntroduzca el DNI del trabajador que\n"
-                + " avisa de necesita repararicion la obra: ");
+        System.out.print("\nIntroduzca el DNI del trabajador que avisa de necesita reparación la obra: ");
 
         dni = IO.readLine();
         Trabajador t = museo.getTrabajador(dni);
         if (t != null) {
 
-            System.out.println("\nIntroduzca el Id de la obra que necesita repación: ");
+            System.out.print("\nIntroduzca el Id de la obra que necesita reparación: ");
             id = IO.readLine();
             Obra o = museo.getObra(id);
             if (o != null) {
-                t.avisaEstropeado(o);
-                museo.notifyObservers(o);
+
+                if (o.isReparado()) {
+                    System.out.println("Ya esta reparado");
+
+                } else {
+                    t.avisaEstropeado(o);
+                    museo.notifyObservers(o);
+                }
+
             } else {
                 System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
             }
