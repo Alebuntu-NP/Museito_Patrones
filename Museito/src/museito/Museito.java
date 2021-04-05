@@ -1,6 +1,8 @@
 package museito;
 
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import poo.io.IO;
@@ -122,24 +124,23 @@ public class Museito {
     }
 
     private static void mostrarAltaTrabajador() {
-        String nombre, apellido, dni, direccion, telefono, puesto;
+        String nombre, apellido, dni, direccion, puesto;
+        int telefono;
+        System.out.println("\nIntroduzca los datos del Cliente");
 
-        int fallo;
-
-//        System.out.println("\nIntroduzca los datos del Cliente");
-//
-//        System.out.print("Nombre: ");
-//        nombre = IO.readLine();
-//        System.out.println("Apellidos: ");
-//        apellido = IO.readLine();
-//        System.out.println("DNI: ");
-//        telefono = IO.readLine();
-//        System.out.print("Dirección: ");
-//        direccion = IO.readLine();
-//        System.out.print("Telefono: ");
-//        telefono = IO.readLine();
-//        System.out.println("Puesto: ");
-        Trabajador t = new Trabajador("Norberto", "Garcia", "5678932B", "Calle Alemeda 37", 673947638, "Presidente");
+        System.out.print("Nombre: ");
+        nombre = IO.readLine();
+        System.out.print("Apellidos: ");
+        apellido = IO.readLine();
+        System.out.print("DNI: ");
+        dni = IO.readLine();
+        System.out.print("Dirección: ");
+        direccion = IO.readLine();
+        System.out.print("Telefono: ");
+        telefono = (int) IO.readNumber();
+        System.out.print("Puesto: ");
+        puesto = IO.readLine();
+        Trabajador t = new Trabajador(nombre, apellido, dni, direccion, telefono, puesto);
         museo.addTrabajador(t);
         System.out.println(museo.getObservadores().get(0));
     }
@@ -153,6 +154,26 @@ public class Museito {
     }
 
     private static void mostrarConsultaTrabajador() {
+
+        String dni;
+        System.out.println("\nIntroduzca el DNI de la obra: ");
+        dni = IO.readLine();
+        boolean enc = false;
+        Iterator it;
+        List trabajadores = museo.getObservadores();
+        it = trabajadores.iterator();
+
+        while (it.hasNext() && !enc) {
+            Trabajador t = (Trabajador) it.next();
+            if (t.getDni().compareTo(dni) == 0) {
+                enc = true;
+                System.out.println(t.getNombre());
+            }
+        }
+
+        if (!enc) {
+            System.out.println("No se ha encontrado un trabajador con el DNI dado");
+        }
 
     }
 
@@ -281,7 +302,25 @@ public class Museito {
     }
 
     private static void mostrarConsultaObra() {
+        String id;
+        System.out.println("\nIntroduzca el Id de la obra: ");
+        id = IO.readLine();
+        boolean enc = false;
+        Iterator it;
+        List obras = museo.getObras();
+        it = obras.iterator();
 
+        while (it.hasNext() && !enc) {
+            Obra o = (Obra) it.next();
+            if (o.getId().compareTo(id) == 0) {
+                enc = true;
+                System.out.println(o.getNombre());
+            }
+        }
+
+        if (!enc) {
+            System.out.println("No se ha encontrado una obra con el Id dado");
+        }
     }
 
     public static void salto(int n) {
