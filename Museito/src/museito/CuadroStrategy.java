@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package museito;
 
 import java.util.logging.Level;
@@ -10,13 +6,22 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author aleja
+ * @author Autores
  */
 public class CuadroStrategy implements Estrategia {
 
+    /**
+     * Constructor vacio de la estrategia de la reparación de un cuadro.
+     */
     public CuadroStrategy() {
     }
 
+
+    /**
+     * Metodo que nos repara un cuadro
+     * @param obra Cuadro que vamos a reparar 
+     * @param museo Museo donde se encuentra dicha obra
+     */
     public void reparar(Obra obra, Museo museo) {
         obra.setEstado("enviado a reparar.");
         Museo.getInstance().notifyObservers(obra);
@@ -32,6 +37,8 @@ public class CuadroStrategy implements Estrategia {
         Museo.getInstance().notifyObservers(obra);
     }
 
+
+    @Override
     public String getTipoStrategy() {
         return "CUADRO";
     }

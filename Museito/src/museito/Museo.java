@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ *
+ * @author Autores
+ */
 public class Museo implements Sujeto {
 
     private String nombre = "AL A MA";
@@ -19,84 +23,156 @@ public class Museo implements Sujeto {
 
     }
 
+    /**
+     * Metodo que nos crea una instancia unica de un MUSEO Esto pertenece al patron Singletone
+     *
+     * @return Nos devuelve un objeto de la clase Museo
+     */
     public static Museo getInstance() {
 
         if (uniqueInstance == null) {
 
-            //Creando la instancia unica Patron Singleton
             uniqueInstance = new Museo();
         }
 
-        //Devolviendo instancia unica Patron Singleton
         return uniqueInstance;
     }
 
+    /**
+     * Metodo que nos devuelve nombre del museo
+     *
+     * @return Nombre del museo
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Metodo que nos modifica el nombre del museo
+     *
+     * @param nombre Nombre que queremos que tenga el museo
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Metodo que nos devuelve la direccion del museo
+     *
+     * @return Direccion del museo
+     */
     public String getDireccion() {
         return direccion;
     }
 
+    /**
+     * Metodo que nos modifica la direccion del museo
+     *
+     * @param direccion Direccion del museo
+     */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
+    /**
+     * Metodo que nos devuelve el pais al que pertenece el museo
+     *
+     * @return Pais al que pertenece el museo
+     */
     public String getPais() {
         return pais;
     }
 
+    /**
+     * Metodo que nos modifica el pais al que pertenece el museo
+     *
+     * @param pais Pais donde va ha estar nuestro museo
+     */
     public void setPais(String pais) {
         this.pais = pais;
     }
 
+    /**
+     * Metodo que nos devuelve el telefono del museo
+     *
+     * @return Telefono del museo
+     */
     public int getTelefono() {
         return telefono;
     }
 
+    /**
+     * Metodo que nos modifica el telefono del museo
+     *
+     * @param telefono Telefono que queremos que tenga el museo
+     */
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
+    /**
+     * Metodo que nos devuelve la web que tiene el museo
+     *
+     * @return Web que tiene el museo
+     */
     public String getWeb() {
         return web;
     }
 
+    /**
+     * Metodo que nos modifica la web que tiene el museo
+     *
+     * @param web Web que queremos que tenga el museo
+     */
     public void setWeb(String web) {
         this.web = web;
     }
 
     //Implementación patrón Observador
+    @Override
     public void notifyObservers(Obra obra) {
-        for (Observador o : observadores) {
+        observadores.forEach((o) -> {
             o.update(obra);
-        }
+        });
     }
 
+    @Override
     public void registerObserver(Observador o) {
         this.observadores.add(o);
     }
 
+    @Override
     public void removeObserver(Observador o) {
         this.observadores.remove(o);
     }
 
+    /**
+     * Metodo que nos devuelve la lista de las obras que tiene el museo
+     *
+     * @return Lista de obras del museo
+     */
     public List<Obra> getObras() {
         return obras;
     }
 
+    /**
+     * Metodo que nos devuelve la lista de todos los observadores que tiene el museo Posdata los observadores son los trabajadores del museo
+     *
+     * @return Lista de los observadores del museo
+     */
     public List<Observador> getObservadores() {
         return observadores;
     }
 
+    /**
+     * Metodo que nos devuelve una obra en concreto basandonos en un id
+     *
+     * @param id Identificador de la obra que queremos buscar
+     * @return Obra que buscamos
+     */
     public Obra getObra(String id) {
         Iterator it;
-        List obras = getObras();
+
         it = obras.iterator();
 
         while (it.hasNext()) {
@@ -109,55 +185,74 @@ public class Museo implements Sujeto {
         return null;
     }
 
+    /**
+     * Metodo que nos devuelve un trabajador dependiendo de un dni
+     *
+     * @param dni Dni del trabajador que buscamos
+     * @return Trabajador que buscamos
+     */
+    public Trabajador getTrabajador(String dni) {
+        Iterator it;
+
+        it = observadores.iterator();
+
+        while (it.hasNext()) {
+            Trabajador t = (Trabajador) it.next();
+            if (t.getDni().compareTo(dni) == 0) {
+                System.out.println(t.getNombre());
+                return t;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Metodo que nos añade un obra al museo y notifica a todos los trabajadores que se ha añadido la obra
+     *
+     * @param obra Obra que se ha añadido al museo
+     */
     public void addObra(Obra obra) {
         obra.setEstado("se añadió");
         this.obras.add(obra);
         this.notifyObservers(obra);
     }
 
-    public boolean deleteObra(String id) {
-        boolean enc = false;
-        Iterator it;
-        it = obras.iterator();
+    /**
+     *
+     * Metodo que nos elimina un obra del museo y notifica a todos los trabajadores que se ha eliminado la obra
+     *
+     * @param obra Obra que queremos eliminar
+     * @return Nos devuelve un true indicando si se ha eliminado la obra o no con un false
+     */
+    public boolean deleteObra(Obra obra) {
 
-        while (it.hasNext() && !enc) {
-            Obra o = (Obra) it.next();
+        obra.setEstado("se eliminó");
+        this.notifyObservers(obra);
+        return obras.remove(obra);
 
-            if (id.compareTo(o.getId()) == 0) {
-                o.setEstado("se eliminó");
-                this.notifyObservers(o);
-                obras.remove(o);
-                enc = true;
-
-            }
-
-        }
-
-        return enc;
     }
 
+    /**
+     * Metodo que nos añade un trabajador al museo
+     *
+     * @param t Trabajador del museo que vamos añadir
+     * @return True si se ha añadido el trabajador o no con un false
+     */
     public boolean addTrabajador(Trabajador t) {
 
         return this.observadores.add(t);
 
     }
 
-    public boolean deleteTrabajador(String dni) {
-        boolean enc = false;
-        Iterator it;
-        it = observadores.iterator();
+    /**
+     * Metodo que nos elimina el trabajador del museo
+     *
+     * @param t Trabajado que queremos eliminar del museo
+     * @return True si se ha eliminado el trabajador o no con un false
+     */
+    public boolean deleteTrabajador(Trabajador t) {
 
-        while (it.hasNext() && !enc) {
-            Trabajador t = (Trabajador) it.next();
+        return observadores.remove(t);
 
-            if (dni.compareTo(t.getDni()) == 0) {
-
-                observadores.remove(t);
-                enc = true;
-            }
-
-        }
-        return enc;
     }
-
 }

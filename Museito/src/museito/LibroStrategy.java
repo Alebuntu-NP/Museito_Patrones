@@ -10,13 +10,21 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author aleja
+ * @author Autores
  */
 public class LibroStrategy implements Estrategia {
 
+    /**
+     * Constructor vacio de la estrategia de un libro
+     */
     public LibroStrategy() {
     }
 
+    /**
+     * Metodo que nos repara un libro
+     * @param obra Libro que vamos a reparar
+     * @param museo Museo en donde vamos a reparar el libro
+     */
     public void reparar(Obra obra, Museo museo) {
 
 
@@ -34,6 +42,8 @@ public class LibroStrategy implements Estrategia {
 
     }
 
+
+    @Override
     public String getTipoStrategy() {
         return "LIBRO";
     }

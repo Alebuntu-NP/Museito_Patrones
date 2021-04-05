@@ -10,15 +10,23 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author aleja
+ * @author Autores
  */
-public class EsculturaStrategy implements Estrategia{
+public class EsculturaStrategy implements Estrategia {
 
+    /**
+     * Construtor vacio de la estrategia de la reparacion de una escultura
+     */
     public EsculturaStrategy() {
     }
 
-    public void reparar(Obra obra,Museo museo) {
-             obra.setEstado("enviado a reparar.");
+    /**
+     * Metodo que nos reparar una escultura
+     * @param obra Escultura que vamos a reparar
+     * @param museo Museo donde se encuentra la escultura
+     */
+    public void reparar(Obra obra, Museo museo) {
+        obra.setEstado("enviado a reparar.");
         Museo.getInstance().notifyObservers(obra);
 
         obra.setEstado("se esta reparando");
@@ -32,6 +40,8 @@ public class EsculturaStrategy implements Estrategia{
         Museo.getInstance().notifyObservers(obra);
     }
 
+
+    @Override
     public String getTipoStrategy() {
         return "ESCULTURA";
     }

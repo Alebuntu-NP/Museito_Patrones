@@ -1,15 +1,27 @@
 package museito;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+/**
+ *
+ * @author Autores
+ */
 public class Trabajador extends Persona implements Observador {
 
     private String puesto;
 
     private List<Estrategia> estrategias;
 
+    /**
+     * Contructor con parametros del trabajador que hace uso del constructor de persona
+     * @param nombre Nombre del trabajador
+     * @param apellido Apellido del trabajador
+     * @param dni Dni del trabajador
+     * @param direccion Direccion del trabajador
+     * @param telefono Telefono del trabajador
+     * @param puesto Puesto del trabajador, como por ejemplo Encargado del Mantenimiento
+     */
     public Trabajador(String nombre, String apellido, String dni, String direccion, int telefono, String puesto) {
         super(nombre, apellido, dni, direccion, telefono);
 
@@ -21,14 +33,27 @@ public class Trabajador extends Persona implements Observador {
         this.puesto = puesto;
     }
 
+    /**
+     * Metodo que nos devuelve el puesto de un trabajador
+     * @return Puesto al que pertenece el trabajador
+     */
     public String getPuesto() {
         return puesto;
     }
 
+    /**
+     * Metodo que nos modifica el puesto al pertenece un trabajador
+     * @param puesto Puesto que va ha tener un trabajador
+     */
     public void setPuesto(String puesto) {
         this.puesto = puesto;
     }
 
+    /**
+     * Metodo que nos devuelve la estrategia que se esta usando dependiendo del tipo de obra
+     * @param tipo Tipo de obra que puede ser: Escultura, Libro o Cuadro
+     * @return Estrategia de reparacion a usar
+     */
     public Estrategia getEstrategia(String tipo) {
         Estrategia estrategia = null;
         if (tipo.compareToIgnoreCase("Escultura") == 0) {
@@ -41,6 +66,7 @@ public class Trabajador extends Persona implements Observador {
         return estrategia;
     }
 
+    @Override
     public void update(Obra obra) {
 
         System.out.println("Se informa al trabajador " + getNombre() + " que: " + obra.getTipo() + " con nombre " + obra.getNombre() + " " + obra.getEstado());

@@ -1,24 +1,39 @@
 package museito;
 
 import java.util.Calendar;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import poo.io.IO;
 
+/**
+ *
+ * @author aleja
+ */
 public class Museito {
 
-    //Pone las letras rojas para el error
+    /**
+     * Pone las letras rojas para el error
+     */
     public static final String LR = "\u001B[31m";
-    // Pone las letras en verde si ha funcionado correctamente
+
+    /**
+     * Pone las letras en verde si ha funcionado correctamente
+     */
     public static final String LG = "\u001B[32m";
-    //Pone las letras a su color por defecto
+
+    /**
+     * Pone las letras a su color por defecto
+     */
     public static final String LD = "\u001B[0m";
 
-    //Museo 
+    /**
+     * Museo en donde se utiliza la aplicación
+     */
     public static Museo museo = Museo.getInstance();
 
+    /**
+     * Programa principal
+     *
+     * @param args No tiene por defecto ningun argumento, solo nos sirve para indicar el main
+     */
     public static void main(String[] args) {
 
         // Patrón Singleton
@@ -41,6 +56,9 @@ public class Museito {
         mostrarOpciones();
     }
 
+    /**
+     *
+     */
     public static void mostrarOpciones() {
 
         int opc;
@@ -150,54 +168,65 @@ public class Museito {
     private static void mostrarBajaTrabajador() {
 
         String dni;
-        System.out.println("\nIntroduzca el DNI de la obra: ");
+        System.out.println("\nIntroduzca el DNI del trabajador: ");
         dni = IO.readLine();
-        boolean enc = false;
-        Iterator it;
-        List trabajadores = museo.getObservadores();
-        it = trabajadores.iterator();
-
-        while (it.hasNext() && !enc) {
-            Trabajador t = (Trabajador) it.next();
-            if (t.getDni().compareTo(dni) == 0) {
-                enc = true;
-                museo.deleteTrabajador(dni);
-            }
-        }
-
-        if (!enc) {
-            System.out.println(LR + "No se ha encontrado un trabajador con el DNI dado" + LD);
-        } else {
-
+        Trabajador t = museo.getTrabajador(dni);
+        if (t != null) {
+            museo.deleteTrabajador(t);
             System.out.println("Se ha dado de baja correctamente.");
+        } else {
+            System.out.println(LR + "No se ha encontrado un trabajador con el DNI dado" + LD);
+
         }
 
     }
 
     private static void mostrarModificacionTrabajador() {
+        String nombre, apellido, dni, direccion, puesto;
+        int telefono;
+        System.out.println("\nIntroduzca el DNI del trabajador: ");
+        dni = IO.readLine();
+        Trabajador t = museo.getTrabajador(dni);
+        if (t != null) {
+            System.out.println("\nIntroduzca los datos del Cliente");
+
+            System.out.print("Nombre: ");
+            nombre = IO.readLine();
+            System.out.print("Apellidos: ");
+            apellido = IO.readLine();
+            System.out.print("DNI: ");
+            dni = IO.readLine();
+            System.out.print("Dirección: ");
+            direccion = IO.readLine();
+            System.out.print("Telefono: ");
+            telefono = (int) IO.readNumber();
+            System.out.print("Puesto: ");
+            puesto = IO.readLine();
+            t.setNombre(nombre);
+            t.setApellido(apellido);
+            t.getDni();
+            t.setDireccion(direccion);
+            t.setTelefono(telefono);
+            t.setPuesto(puesto);
+
+        } else {
+            System.out.println(LR + "No se ha encontrado un trabajador con el DNI dado" + LD);
+        }
 
     }
 
     private static void mostrarConsultaTrabajador() {
 
         String dni;
-        System.out.println("\nIntroduzca el DNI de la obra: ");
+        System.out.println("\nIntroduzca el DNI del trabajador: ");
         dni = IO.readLine();
-        boolean enc = false;
-        Iterator it;
-        List trabajadores = museo.getObservadores();
-        it = trabajadores.iterator();
+        Trabajador t = museo.getTrabajador(dni);
+        if (t != null) {
+            System.out.println(t.getNombre());
 
-        while (it.hasNext() && !enc) {
-            Trabajador t = (Trabajador) it.next();
-            if (t.getDni().compareTo(dni) == 0) {
-                enc = true;
-                System.out.println(t.getNombre());
-            }
-        }
-
-        if (!enc) {
+        } else {
             System.out.println(LR + "No se ha encontrado un trabajador con el DNI dado" + LD);
+
         }
 
     }
@@ -261,7 +290,7 @@ public class Museito {
         nombre = IO.readLine();
 
         do {
-            System.out.print("Tipo: (Libro, Escultura o Cuadro)");
+            System.out.print("Tipo(Libro, Escultura o Cuadro): ");
             tipo = IO.readLine();
             if (tipo.compareToIgnoreCase("Libro") == 0 || tipo.compareToIgnoreCase("Escultura") == 0 || tipo.compareToIgnoreCase("Cuadro") == 0) {
                 fallo = 0;
@@ -270,7 +299,7 @@ public class Museito {
                 fallo = -1;
             }
         } while (fallo == -1);
-
+//Arreglar en cada case un constructor
         switch (tipo) {
             case "Libro":
                 id = "L" + contador;
@@ -293,7 +322,7 @@ public class Museito {
         autor = IO.readLine();
         fallo = -1;
         do {
-            System.out.print("¿Está para reparar?: (true/false)");
+            System.out.print("¿Está para reparar?(true/false): ");
             reparado = IO.readBoolean();
             if (reparado == true || reparado == false) {
                 fallo = 0;
@@ -322,38 +351,53 @@ public class Museito {
         String id;
         System.out.println("\nIntroduzca el Id de la obra: ");
         id = IO.readLine();
-        boolean enc = false;
-        Iterator it;
-        List obras = museo.getObras();
-        it = obras.iterator();
 
-        while (it.hasNext() && !enc) {
-            Obra o = (Obra) it.next();
-            if (o.getId().compareTo(id) == 0) {
-                enc = true;
-                museo.deleteObra(id);
-            }
-        }
-
-        if (!enc) {
-            System.out.println("No se ha encontrado una obra con el Id dado");
+        Obra obra = museo.getObra(id);
+        if (obra != null) {
+            museo.deleteObra(obra);
+        } else {
+            System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
         }
     }
 
     private static void mostrarModificacionObra() {
-        String id;
+        String id, nombre, autor, estilo, descripcion, origen;
+        int anyo, fallo = -1;
         System.out.println("\nIntroduzca el Id de la obra a modificar: ");
         id = IO.readLine();
         Obra o = museo.getObra(id);
         if (o != null) {
             System.out.println("\nIntroduzca los datos del Obra");
+            System.out.print("Nombre: ");
+            nombre = IO.readLine();
+            System.out.print("Autor: ");
+            autor = IO.readLine();
+            System.out.print("Estilo: ");
+            estilo = IO.readLine();
+            System.out.print("Descripción: ");
+            descripcion = IO.readLine();
+            do {
+                System.out.print("Año de la obra: ");
+                anyo = (int) IO.readNumber();
+                if (anyo <= Calendar.getInstance().get(Calendar.YEAR)) {
+                    fallo = 0;
+                } else {
+                    System.out.println(LR + "\nError: La obra no puede ser creada con fecha posterior a la actual" + LD);
+                }
+            } while (fallo == -1);
+            System.out.print("Origen: ");
+            origen = IO.readLine();
 
-            System.out.print("Nombre: ");
-            nombre = IO.readLine();
-            o.setAutor();
-            System.out.print("Nombre: ");
-            nombre = IO.readLine();
-            o.getDescripcion();
+            o.setNombre(nombre);
+            o.setEstilo(estilo);
+            o.setAutor(autor);
+            o.setAnyo(anyo);
+            o.setOrigen(origen);
+            o.setDescripcion(descripcion);
+
+            o.setEstado("se ha actualizado la información");
+            museo.notifyObservers(o);
+
         } else {
             System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
         }
@@ -372,6 +416,11 @@ public class Museito {
         }
     }
 
+    /**
+     * Es basicamente un salto de linea muy grande para hacer el salto de un menu a otro
+     *
+     * @param n Numero de linea que queramos saltarnos
+     */
     public static void salto(int n) {
 
         for (int i = 0; i < n; i++) {
