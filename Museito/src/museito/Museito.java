@@ -29,6 +29,8 @@ public class Museito {
      */
     public static Museo museo = Museo.getInstance();
 
+    public static int contador = 1;
+
     /**
      * Programa principal
      *
@@ -281,7 +283,7 @@ public class Museito {
 
     private static void mostrarAltaObra() {
         String id = "", nombre, tipo, estilo, estado = "", origen, autor, descripcion;
-        int fallo, anyo, contador = 1;
+        int fallo, anyo;
         boolean reparado;
 
         System.out.println("\nIntroduzca los datos del Obra");
@@ -300,20 +302,7 @@ public class Museito {
             }
         } while (fallo == -1);
 //Arreglar en cada case un constructor
-        switch (tipo) {
-            case "Libro":
-                id = "L" + contador;
-                break;
-            case "Escultura":
-                id = "E" + contador;
-                break;
-            case "Cuadro":
-                id = "C" + contador;
-                break;
-            default:
-                break;
-        }
-        contador++;
+
         System.out.print("Estilo: ");
         estilo = IO.readLine();
         System.out.print("Origen: ");
@@ -342,8 +331,37 @@ public class Museito {
         } while (fallo == -1);
         System.out.print("Descripción: ");
         descripcion = IO.readLine();
-        Obra nuevaObra = new Obra(id, nombre, tipo, estilo, anyo, origen, null, autor, estado, reparado, descripcion);
-        museo.addObra(nuevaObra);
+
+        switch (tipo) {
+            case "Libro":
+                id = "L" + contador;
+                int paginas;
+                System.out.print("Numero de paginas: ");
+                paginas = (int) IO.readNumber();
+                Libro libro = new Libro(id, nombre, estilo, anyo, origen, null, autor, estado, reparado, descripcion, paginas);
+                museo.addObra(libro);
+                break;
+            case "Escultura":
+                id = "E" + contador;
+                String material;
+                System.out.print("Material: ");
+                material = IO.readLine();
+                Escultura escultura = new Escultura(id, nombre, estilo, anyo, origen, null, autor, estado, reparado, descripcion, material);
+                museo.addObra(escultura);
+                break;
+            case "Cuadro":
+                id = "C" + contador;
+                String marco;
+                System.out.print("Marco: ");
+                marco = IO.readLine();
+                Cuadro cuadro = new Cuadro(id, nombre, estilo, anyo, origen, null, autor, estado, reparado, descripcion, marco);
+                museo.addObra(cuadro);
+                break;
+            default:
+                break;
+        }
+        contador++;
+
         System.out.println("La obra se ha añadido correctamente");
     }
 
