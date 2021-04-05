@@ -13,6 +13,7 @@ public class Escultura extends Obra {
 
     /**
      * Constructor con parametros de escultura
+     *
      * @param id Identificador de la escultura
      * @param nombre Nombre de la escultura
      * @param estilo Estilo de la escultura
@@ -32,6 +33,7 @@ public class Escultura extends Obra {
 
     /**
      * Este metodo sirve para devolvernos el tipo de material de la escultura
+     *
      * @return Devuelve el material con el que esta hecha la escultura
      */
     public String getMaterial() {
@@ -40,10 +42,16 @@ public class Escultura extends Obra {
 
     /**
      * Nos modifica el material de la escultura
+     *
      * @param material Material del que esta hecha la escultura
      */
     public void setMaterial(String material) {
         this.material = material;
     }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + "\nMaterial: " + material;
+    }
 }

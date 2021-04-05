@@ -49,4 +49,9 @@ public class Libro extends Obra {
         this.num_paginas = num_paginas;
     }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + "\nNumero de paginas: " + num_paginas;
+    }
 }

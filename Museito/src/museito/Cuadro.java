@@ -1,4 +1,3 @@
-
 package museito;
 
 import java.util.Calendar;
@@ -14,6 +13,7 @@ public class Cuadro extends Obra {
 
     /**
      * Constructor con parametros de cuadro
+     *
      * @param id Identificador del cuadro
      * @param nombre Nombre del cuadro
      * @param estilo Estilo del cuadro
@@ -34,6 +34,7 @@ public class Cuadro extends Obra {
 
     /**
      * Este metodo sirve para devolvernos el tipo de marco del cuadro
+     *
      * @return Devuelve el tipo de cuadro
      */
     public String getMarco() {
@@ -42,10 +43,17 @@ public class Cuadro extends Obra {
 
     /**
      * Nos modifica el marco del cuadro
+     *
      * @param marco Marco que queramos que tenga el cuadro
      */
     public void setMarco(String marco) {
         this.marco = marco;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + "\nMarco: " + marco;
     }
 
 }

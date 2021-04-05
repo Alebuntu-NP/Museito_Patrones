@@ -249,17 +249,18 @@ public class Obra {
 
     @Override
     public String toString() {
-        return "Obra con id=" + id +
-                ", nombre=" + nombre +
-                ", tipo=" + tipo +
-                ", estilo=" + estilo +
-                ", anyo=" + anyo +
-                ", origen=" + origen +
-                ", fecha_reparacion=" + fecha_reparacion +
-                ", autor=" + autor +
-                ", estado=" + estado +
-                ", reparado=" + reparado +
-                ", descripcion=" + descripcion + '}';
+        return "\nNombre: " + nombre
+                + "\nTipo: " + tipo
+                + "\nEstilo: " + estilo
+                + "\nAño: " + anyo
+                + "\nOrigen: " + origen
+                + "\nFecha reparacion: " + fecha_reparacion
+                + "\nAutor: " + autor
+                + "\nEstado: " + estado
+                + "\nReparado: " + reparado
+                + "\nDescripcion: " + descripcion;
+        
+        
     }
 
 }
