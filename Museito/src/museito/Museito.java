@@ -47,24 +47,19 @@ public class Museito {
      */
     public static void main(String[] args) {
 
-        // Patrón Singleton
-//        System.out.println(museo.getDireccion());
         Trabajador t1 = new Trabajador("Norberto", "Garcia", "5678932B", "Calle Alemeda 37", 673947638, "Presidente");
         Trabajador t2 = new Trabajador("Patricia", "Garcia", "5678931B", "Calle Alemeda 37", 673947637, "Barrendero");
-//
-//        museo.registerObserver(t1);
-//        museo.registerObserver(t2);
-//        Libro libro1 = new Libro("12sq", "Mona Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color", 23);
-//        Escultura escultura = new Escultura("12sq", "Mono Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color", "Oro");
-//        System.out.println(libro1.getTipo());
-//        museo.addObra(libro1);
-//        museo.addObra(escultura);
+
+        museo.registerObserver(t1);
+        museo.registerObserver(t2);
+        Libro libro1 = new Libro("L1", "Mona Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color", 23);
+        Escultura escultura = new Escultura("E1", "Mono Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", "Recien añadido", false, "Mu bonito y poco color", "Oro");
+
+        museo.addObra(libro1);
+        museo.addObra(escultura);
         museo.addTrabajador(t1);
         museo.addTrabajador(t2);
-        // t1.getEstrategia("libro").reparar(libro1, museo);
-        // t1.getEstrategia("escultura").reparar(escultura, museo);
-        //museo.deleteObra("12sq");
-        // museo.deleteTrabajador("5678932B");
+
         mostrarOpciones();
     }
 
