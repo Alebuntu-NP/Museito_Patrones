@@ -348,20 +348,10 @@ public class Museito {
         String id;
         System.out.println("\nIntroduzca el Id de la obra: ");
         id = IO.readLine();
-        boolean enc = false;
-        Iterator it;
-        List obras = museo.getObras();
-        it = obras.iterator();
-
-        while (it.hasNext() && !enc) {
-            Obra o = (Obra) it.next();
-            if (o.getId().compareTo(id) == 0) {
-                enc = true;
-                System.out.println(o.getNombre());
-            }
-        }
-
-        if (!enc) {
+        Obra o =museo.getObra(id);
+        if (o!=null) {
+            System.out.println(o.getNombre());
+        }else {
             System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
         }
     }
