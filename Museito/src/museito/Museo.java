@@ -71,6 +71,7 @@ public class Museo implements Sujeto {
         this.web = web;
     }
 
+    
     //Implementación patrón Observador
     public void notifyObservers(Obra obra) {
         for (Observador o : observadores) {
@@ -84,6 +85,14 @@ public class Museo implements Sujeto {
 
     public void removeObserver(Observador o) {
         this.observadores.remove(o);
+    }
+
+    public List<Obra> getObras() {
+        return obras;
+    }
+
+    public List<Observador> getObservadores() {
+        return observadores;
     }
 
     public void addObra(Obra obra) {
@@ -104,7 +113,31 @@ public class Museo implements Sujeto {
                 o.setEstado("se eliminó");
                 this.notifyObservers(o);
                 obras.remove(o);
-                enc=true;
+                enc = true;
+
+            }
+
+        }
+        return enc;
+    }
+
+    public boolean addTrabajador(Trabajador t) {
+
+        return this.observadores.add(t);
+
+    }
+
+    public boolean deleteTrabajador(String dni) {
+        boolean enc = false;
+        Iterator it;
+        it = observadores.iterator();
+
+        while (it.hasNext() && !enc) {
+            Trabajador t = (Trabajador) it.next();
+
+            if (dni.compareTo(t.getDni()) == 0) {
+
+                observadores.remove(t);
 
             }
 

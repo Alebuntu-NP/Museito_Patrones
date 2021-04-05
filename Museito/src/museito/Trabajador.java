@@ -46,4 +46,9 @@ public class Trabajador extends Persona implements Observador {
         System.out.println("Se informa al trabajador " + getNombre() + " que: " + obra.getTipo() + " con nombre " + obra.getNombre() + " " + obra.getEstado());
     }
 
+    @Override
+    public String toString() {
+        return "Trabajador{" + "puesto=" + puesto;
+    }
+
 }
