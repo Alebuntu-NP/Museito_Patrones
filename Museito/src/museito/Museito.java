@@ -460,9 +460,23 @@ public class Museito {
 
     private static void mostrarRepararObra() {
 
+        String id;
+        System.out.println("\nIntroduzca el DNI del trabajador que lleva\n"
+                + "la obra a reparar: ");
+        id = IO.readLine();
+        System.out.println("\nIntroduzca el Id de la obra: ");
+        id = IO.readLine();
+        Obra o = museo.getObra(id);
+        if (o != null) {
+
+        } else {
+            System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
+        }
+
     }
 
     private static void mostrarAvisoReparacionObra() {
+
     }
 
     private static void pantallaListarTrabajadores() {

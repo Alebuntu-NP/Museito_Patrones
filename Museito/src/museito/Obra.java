@@ -6,7 +6,7 @@ import java.util.Calendar;
  *
  * @author aleja
  */
-public class Obra {
+public class Obra implements Comparable {
 
     private String id;
     private String nombre;
@@ -248,6 +248,12 @@ public class Obra {
     }
 
     @Override
+    public int compareTo(Object o) {
+        Persona p = (Persona) o;
+        return this.nombre.compareTo(p.getNombre());
+    }
+
+    @Override
     public String toString() {
         return "\nNombre: " + nombre
                 + "\nTipo: " + tipo
@@ -259,8 +265,7 @@ public class Obra {
                 + "\nEstado: " + estado
                 + "\nReparado: " + reparado
                 + "\nDescripcion: " + descripcion;
-        
-        
+
     }
 
 }

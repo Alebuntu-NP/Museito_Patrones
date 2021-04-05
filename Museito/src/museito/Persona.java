@@ -9,7 +9,7 @@ package museito;
  *
  * @author Autores
  */
-public class Persona {
+public class Persona implements Comparable {
 
     private String nombre;
     private String apellido;
@@ -123,7 +123,11 @@ public class Persona {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
-
+    @Override
+   public int compareTo(Object o) {
+        Persona p = (Persona) o;
+        return this.nombre.compareTo(p.getNombre());
+    }
 
 
 }
