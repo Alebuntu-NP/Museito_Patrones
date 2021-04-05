@@ -144,7 +144,7 @@ public class Museito {
         puesto = IO.readLine();
         Trabajador t = new Trabajador(nombre, apellido, dni, direccion, telefono, puesto);
         museo.addTrabajador(t);
-        System.out.println("El trabajador "+t.getNombre()+" se ha dado de baja correctamente.");
+        System.out.println("El trabajador " + t.getNombre() + " se ha dado de baja correctamente.");
     }
 
     private static void mostrarBajaTrabajador() {
@@ -341,6 +341,22 @@ public class Museito {
     }
 
     private static void mostrarModificacionObra() {
+        String id;
+        System.out.println("\nIntroduzca el Id de la obra a modificar: ");
+        id = IO.readLine();
+        Obra o = museo.getObra(id);
+        if (o != null) {
+            System.out.println("\nIntroduzca los datos del Obra");
+
+            System.out.print("Nombre: ");
+            nombre = IO.readLine();
+            o.setAutor();
+            System.out.print("Nombre: ");
+            nombre = IO.readLine();
+            o.getDescripcion();
+        } else {
+            System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
+        }
 
     }
 
@@ -348,10 +364,10 @@ public class Museito {
         String id;
         System.out.println("\nIntroduzca el Id de la obra: ");
         id = IO.readLine();
-        Obra o =museo.getObra(id);
-        if (o!=null) {
+        Obra o = museo.getObra(id);
+        if (o != null) {
             System.out.println(o.getNombre());
-        }else {
+        } else {
             System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
         }
     }
