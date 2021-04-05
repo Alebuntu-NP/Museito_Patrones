@@ -217,7 +217,7 @@ public class Museito {
         do {
             System.out.print("Tipo: (Libro, Escultura o Cuadro)");
             tipo = IO.readLine();
-            if (tipo == "Libro" || tipo == "Escultura" || tipo == "Cuadro") {
+            if (tipo.compareToIgnoreCase("Libro") == 0 || tipo.compareToIgnoreCase("Escultura") == 0 || tipo.compareToIgnoreCase("Cuadro") == 0) {
                 fallo = 0;
             } else {
                 System.out.println(LR + "\nError: El dato introducido ha de ser Libro, Escultura o Libro." + LD);
