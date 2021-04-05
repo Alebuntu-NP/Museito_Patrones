@@ -178,7 +178,6 @@ public class Museo implements Sujeto {
         while (it.hasNext()) {
             Obra o = (Obra) it.next();
             if (o.getId().compareTo(id) == 0) {
-                System.out.println(o.getNombre());
                 return o;
             }
         }
