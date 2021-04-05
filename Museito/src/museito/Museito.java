@@ -452,13 +452,15 @@ public class Museito {
         id = IO.readLine();
         Obra o = museo.getObra(id);
         if (o != null) {
-            System.out.println(o.getNombre());
+            System.out.println(o.toString());
         } else {
             System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
         }
     }
 
     private static void mostrarRepararObra() {
+        
+        
     }
 
     private static void mostrarAvisoReparacionObra() {

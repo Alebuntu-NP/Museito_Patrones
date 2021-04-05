@@ -247,4 +247,19 @@ public class Obra {
         this.descripcion = descripcion;
     }
 
+    @Override
+    public String toString() {
+        return "Obra con id=" + id +
+                ", nombre=" + nombre +
+                ", tipo=" + tipo +
+                ", estilo=" + estilo +
+                ", anyo=" + anyo +
+                ", origen=" + origen +
+                ", fecha_reparacion=" + fecha_reparacion +
+                ", autor=" + autor +
+                ", estado=" + estado +
+                ", reparado=" + reparado +
+                ", descripcion=" + descripcion + '}';
+    }
+
 }
