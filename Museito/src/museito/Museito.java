@@ -54,16 +54,16 @@ public class Museito {
         Escultura escultura = new Escultura("E1", "Mono Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", null, false, "Mu bonito", "Oro");
         Cuadro cuadro = new Cuadro("C1", "Mona Lisa", "Barroco", 2013, "ESPAÑA", null, "Alberto", null, false, "Mu bonito y poco color", "Madera de la buena");;
 
+        // Obras por defecto
         museo.addObra(libro);
         museo.addObra(escultura);
         museo.addObra(cuadro);
-
+        
+        // Trabajadores por defecto
         museo.addTrabajador(t1);
         museo.addTrabajador(t2);
-        t1.repararObra(libro, museo);
-        t1.repararObra(escultura, museo);
-        t1.repararObra(cuadro, museo);
-        //   mostrarOpciones();
+
+        mostrarOpciones();
     }
 
     /**
