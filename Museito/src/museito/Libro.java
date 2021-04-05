@@ -1,4 +1,3 @@
-
 package museito;
 
 import java.util.Calendar;
@@ -14,6 +13,7 @@ public class Libro extends Obra {
 
     /**
      * Constructor con parametros de libro
+     *
      * @param id Identificador del libro
      * @param nombre Nombre del libro
      * @param estilo Estilo del libro
@@ -35,6 +35,7 @@ public class Libro extends Obra {
 
     /**
      * Metodo que nos devuelve el numero de paginas que tiene un libro
+     *
      * @return Paginas que tiene el libro
      */
     public int getNum_paginas() {
@@ -43,6 +44,7 @@ public class Libro extends Obra {
 
     /**
      * Metodo que nos modifica el numero de paginas que tiene un libro
+     *
      * @param num_paginas Numero de paginas del libro
      */
     public void setNum_paginas(int num_paginas) {

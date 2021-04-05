@@ -123,11 +123,11 @@ public class Persona implements Comparable {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
+
     @Override
-   public int compareTo(Object o) {
+    public int compareTo(Object o) {
         Persona p = (Persona) o;
         return this.nombre.compareTo(p.getNombre());
     }
-
 
 }

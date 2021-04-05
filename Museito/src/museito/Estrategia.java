@@ -13,6 +13,7 @@ public interface Estrategia {
 
     /**
      * Metodo que nos repara una obra dependiendo del tipo de estrategia a utilizar
+     *
      * @param obra Obra que vamos a reparar
      * @param museo Museo donde se encuentra dicha obra
      */
@@ -20,6 +21,7 @@ public interface Estrategia {
 
     /**
      * Metodo que nos devuelve el tipo de estrategia que estamos utilizando
+     *
      * @return Tipo de estrategia que estamos usando
      */
     String getTipoStrategy();

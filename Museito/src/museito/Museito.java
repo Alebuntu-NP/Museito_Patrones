@@ -1,6 +1,8 @@
 package museito;
 
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
 import poo.io.IO;
 
 /**
@@ -48,7 +50,7 @@ public class Museito {
         // Patrón Singleton
 //        System.out.println(museo.getDireccion());
         Trabajador t1 = new Trabajador("Norberto", "Garcia", "5678932B", "Calle Alemeda 37", 673947638, "Presidente");
-//        Trabajador t2 = new Trabajador("Patricia", "Garcia", "5678931B", "Calle Alemeda 37", 673947637, "Barrendero");
+        Trabajador t2 = new Trabajador("Patricia", "Garcia", "5678931B", "Calle Alemeda 37", 673947637, "Barrendero");
 //
 //        museo.registerObserver(t1);
 //        museo.registerObserver(t2);
@@ -57,7 +59,8 @@ public class Museito {
 //        System.out.println(libro1.getTipo());
 //        museo.addObra(libro1);
 //        museo.addObra(escultura);
-        //museo.addTrabajador(t1);
+        museo.addTrabajador(t1);
+        museo.addTrabajador(t2);
         // t1.getEstrategia("libro").reparar(libro1, museo);
         // t1.getEstrategia("escultura").reparar(escultura, museo);
         //museo.deleteObra("12sq");
@@ -460,31 +463,82 @@ public class Museito {
 
     private static void mostrarRepararObra() {
 
-        String id;
+        String id, dni;
         System.out.println("\nIntroduzca el DNI del trabajador que lleva\n"
                 + "la obra a reparar: ");
-        id = IO.readLine();
-        System.out.println("\nIntroduzca el Id de la obra: ");
-        id = IO.readLine();
-        Obra o = museo.getObra(id);
-        if (o != null) {
 
+        dni = IO.readLine();
+        Trabajador t = museo.getTrabajador(dni);
+        if (t != null) {
+
+            System.out.println("\nIntroduzca el Id de la obra que necesita repación: ");
+            id = IO.readLine();
+            Obra o = museo.getObra(id);
+            if (o != null) {
+                t.repararObra(o, museo);
+            } else {
+                System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
+            }
         } else {
-            System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
+            System.out.println(LR + "No se ha encontrado un trabajador con el DNI dado" + LD);
+
         }
 
     }
 
     private static void mostrarAvisoReparacionObra() {
+        String id, dni;
+        System.out.println("\nIntroduzca el DNI del trabajador que\n"
+                + " avisa de necesita repararicion la obra: ");
 
+        dni = IO.readLine();
+        Trabajador t = museo.getTrabajador(dni);
+        if (t != null) {
+
+            System.out.println("\nIntroduzca el Id de la obra que necesita repación: ");
+            id = IO.readLine();
+            Obra o = museo.getObra(id);
+            if (o != null) {
+                t.avisaEstropeado(o);
+                museo.notifyObservers(o);
+            } else {
+                System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);
+            }
+        } else {
+            System.out.println(LR + "No se ha encontrado un trabajador con el DNI dado" + LD);
+
+        }
     }
 
     private static void pantallaListarTrabajadores() {
+        System.out.println("LISTA DE TRABAJADORES");
+        List<Observador> ts = museo.getObservadores();
+        Iterator it;
+        it = ts.iterator();
 
+        while (it.hasNext()) {
+            Trabajador t = (Trabajador) it.next();
+            System.out.println("\nDNI: " + t.getDni() + "\t-\tNombre: " + t.getNombre() + " " + t.getApellido());
+
+        }
+        System.out.println("");
+        System.out.println("Pulsa ENTER para ir al menú");
+        IO.readLine();
     }
 
     private static void pantallaListarObras() {
+        System.out.println("LISTA DE OBRAS");
+        List<Obra> ts = museo.getObras();
+        Iterator it;
+        it = ts.iterator();
 
+        while (it.hasNext()) {
+            Obra o = (Obra) it.next();
+            System.out.println("\nID: " + o.getId() + "\t-\tNombre: " + o.getNombre() + "\t-\tAutor: " + o.getAutor());
+        }
+        System.out.println("");
+        System.out.println("Pulsa ENTER para ir al menú");
+        IO.readLine();
     }
 
     /**

@@ -1,4 +1,3 @@
-
 package museito;
 
 import java.util.logging.Level;
@@ -16,10 +15,10 @@ public class CuadroStrategy implements Estrategia {
     public CuadroStrategy() {
     }
 
-
     /**
      * Metodo que nos repara un cuadro
-     * @param obra Cuadro que vamos a reparar 
+     *
+     * @param obra Cuadro que vamos a reparar
      * @param museo Museo donde se encuentra dicha obra
      */
     public void reparar(Obra obra, Museo museo) {
@@ -36,7 +35,6 @@ public class CuadroStrategy implements Estrategia {
         obra.setEstado("ha sido reparado.");
         Museo.getInstance().notifyObservers(obra);
     }
-
 
     @Override
     public String getTipoStrategy() {

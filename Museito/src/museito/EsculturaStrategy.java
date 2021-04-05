@@ -22,6 +22,7 @@ public class EsculturaStrategy implements Estrategia {
 
     /**
      * Metodo que nos reparar una escultura
+     *
      * @param obra Escultura que vamos a reparar
      * @param museo Museo donde se encuentra la escultura
      */
@@ -39,7 +40,6 @@ public class EsculturaStrategy implements Estrategia {
         obra.setEstado("ha sido reparado.");
         Museo.getInstance().notifyObservers(obra);
     }
-
 
     @Override
     public String getTipoStrategy() {

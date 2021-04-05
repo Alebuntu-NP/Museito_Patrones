@@ -22,11 +22,11 @@ public class LibroStrategy implements Estrategia {
 
     /**
      * Metodo que nos repara un libro
+     *
      * @param obra Libro que vamos a reparar
      * @param museo Museo en donde vamos a reparar el libro
      */
     public void reparar(Obra obra, Museo museo) {
-
 
         obra.setEstado("enviado a reparar.");
         Museo.getInstance().notifyObservers(obra);
@@ -41,7 +41,6 @@ public class LibroStrategy implements Estrategia {
         Museo.getInstance().notifyObservers(obra);
 
     }
-
 
     @Override
     public String getTipoStrategy() {
