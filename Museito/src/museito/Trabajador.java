@@ -5,12 +5,11 @@ import java.util.List;
 
 /**
  *
- * @author Autores
+ * @author Alberto García,Maria Pérula y Alejandro Román
  */
 public class Trabajador extends Persona implements Observador {
 
     private String puesto;
-
     private List<Estrategia> estrategias;
 
     /**
@@ -27,7 +26,6 @@ public class Trabajador extends Persona implements Observador {
         super(nombre, apellido, dni, direccion, telefono);
 
         this.estrategias = new ArrayList<Estrategia>();
-
         this.estrategias.add((Estrategia) new EsculturaStrategy());
         this.estrategias.add((Estrategia) new LibroStrategy());
         this.estrategias.add((Estrategia) new CuadroStrategy());

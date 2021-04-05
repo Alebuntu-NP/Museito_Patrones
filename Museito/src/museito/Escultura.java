@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 /**
  *
- * @author aleja
+ * @author Alberto García,Maria Pérula y Alejandro Román
  */
 public class Escultura extends Obra {
 

@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Autores
+ * @author Alberto García,Maria Pérula y Alejandro Román
  */
 public class CuadroStrategy implements Estrategia {
 
@@ -36,6 +36,7 @@ public class CuadroStrategy implements Estrategia {
             Museo.getInstance().notifyObservers(obra);
             Thread.sleep(5 * 1000);
             obra.setEstado("ha terminado de repararse");
+            obra.setReparado(true);
             Museo.getInstance().notifyObservers(obra);
             Thread.sleep(5 * 1000);
             obra.setEstado("esta siendo llevada a la exposición del museo.");

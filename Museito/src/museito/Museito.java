@@ -7,7 +7,7 @@ import poo.io.IO;
 
 /**
  *
- * @author aleja
+ * @author Alberto García,Maria Pérula y Alejandro Román
  */
 public class Museito {
 
@@ -474,6 +474,7 @@ public class Museito {
 
                 } else {
                     t.repararObra(o, museo);
+
                 }
             } else {
                 System.out.println(LR + "No se ha encontrado una obra con el Id dado" + LD);

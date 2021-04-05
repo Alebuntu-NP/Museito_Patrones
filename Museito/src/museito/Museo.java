@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author Autores
+ * @author Alberto García,Maria Pérula y Alejandro Román
  */
 public class Museo implements Sujeto {
 

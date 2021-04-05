@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 /**
  *
- * @author Autores
+ * @author Alberto García,Maria Pérula y Alejandro Román
  */
 public class Cuadro extends Obra {
 

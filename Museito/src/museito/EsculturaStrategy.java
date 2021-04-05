@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package museito;
 
 import java.util.logging.Level;
@@ -10,7 +6,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Autores
+ * @author Alberto García,Maria Pérula y Alejandro Román
  */
 public class EsculturaStrategy implements Estrategia {
 
@@ -41,6 +37,7 @@ public class EsculturaStrategy implements Estrategia {
             Museo.getInstance().notifyObservers(obra);
             Thread.sleep(5 * 1000);
             obra.setEstado("ha terminado de repararse");
+            obra.setReparado(true);
             Museo.getInstance().notifyObservers(obra);
             Thread.sleep(5 * 1000);
             obra.setEstado("esta siendo llevada a la exposición del museo.");

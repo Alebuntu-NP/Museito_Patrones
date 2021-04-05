@@ -2,7 +2,7 @@ package museito;
 
 /**
  *
- * @author Autores
+ * @author Alberto García,Maria Pérula y Alejandro Román
  */
 public interface Sujeto {
     //Implementación patrón Observador
