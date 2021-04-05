@@ -179,7 +179,7 @@ public class Museito {
         puesto = IO.readLine();
         Trabajador t = new Trabajador(nombre, apellido, dni, direccion, telefono, puesto);
         museo.addTrabajador(t);
-        System.out.println("El trabajador " + t.getNombre() + " se ha dado de baja correctamente.");
+        System.out.println("El trabajador " + t.getNombre() + " se ha dado de alta correctamente.");
     }
 
     private static void mostrarBajaTrabajador() {
@@ -239,7 +239,7 @@ public class Museito {
         dni = IO.readLine();
         Trabajador t = museo.getTrabajador(dni);
         if (t != null) {
-            System.out.println(t.getNombre());
+            System.out.println(t.toString());
 
         } else {
             System.out.println(LR + "No se ha encontrado un trabajador con el DNI dado" + LD);
@@ -459,8 +459,7 @@ public class Museito {
     }
 
     private static void mostrarRepararObra() {
-        
-        
+
     }
 
     private static void mostrarAvisoReparacionObra() {

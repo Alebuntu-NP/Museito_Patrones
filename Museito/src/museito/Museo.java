@@ -198,7 +198,6 @@ public class Museo implements Sujeto {
         while (it.hasNext()) {
             Trabajador t = (Trabajador) it.next();
             if (t.getDni().compareTo(dni) == 0) {
-                System.out.println(t.getNombre());
                 return t;
             }
         }
